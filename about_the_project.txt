@@ -1,4 +1,16 @@
+Initiating K8S cluster:
+kubeadm init --pod-network-cidr "10.244.0.0/16"
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl taint nodes ip-<10-0-1-240>.eu-north-1.compute.internal node-role.kubernetes.io/control-plane:NoSchedule-
+kubectl apply -f "https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/calico.yaml"
+
 on the host remember to create the /data and /elasticsearch directory
+
+required for elasticsearch:
 sudo sysctl -w vm.max_map_count=262144
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+
+cloning repo to the node:
 git clone https://github.com/SZGYuval/mongo-connection
