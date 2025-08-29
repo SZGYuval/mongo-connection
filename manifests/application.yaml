@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: application-container
+          image: szgyuval123/mongo-connection:1.0.2
+          ports:
+            - containerPort: 80
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongodb:27017"
+            - name: MONGODB_DB
+              value: "messages"
+            - name: MONGO_COLLECTION
+              value: "check"

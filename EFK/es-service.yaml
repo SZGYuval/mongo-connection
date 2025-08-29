@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: service
+metadata:
+  name: elasticsearch-service
+  namespace: efk
+spec:
+  selector:
+    app: elasticsearch
+  type: NodePort
+  ports:
+    - targetPort: 9200
+      port: 9200
+      nodePort: 30200
+      name: port1
+    - targetPort: 9300
+      port: 9300
+      nodePort: 30300
+      name: port2
