@@ -24,4 +24,4 @@ spec:
       volumes:
         - name: db-volume
           hostPath:
-            - path: /data
+            path: /data
