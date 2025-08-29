@@ -1,3 +1,4 @@
 on the host remember to create the /data and /elasticsearch directory
 sudo sysctl -w vm.max_map_count=262144
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+git clone https://github.com/SZGYuval/mongo-connection
